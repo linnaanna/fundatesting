@@ -1,0 +1,74 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+Documentation	Issue Test scenario. CRUD Operation: Create, Read, Update, Delete
+
+# TODO: Write Precondition and Postcondition, Tags 
+
+Pre Condition	Open Browser, navigate to login page, login using valid credentials, create blank project with name ProjectName4
+Post Condition	Close All Browsers
+Tags	IssuePage, TS-1-IssuePage
+
+#******************* Common Variables ********************
+
+
+*** Variables ***
+
+# NOTE: Please Remove your login credential before uploading Assignments
+
+# TODO: Write Issue creation field variables, Updated name of the issue
+
+ProjectName4= testproject4
+IssueTitle= testissue
+UpdatedTitle= testissue2
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# TODO: Write Positive Test Cases and Test Process steps
+
+# Positive Test examples are below write test process steps for each below test case
+
+	Issue title should be as page title after Create issue
+	Navigate to homepage
+	Click "Issues" on left side menu
+	Click arrow down symbol by blue "Select project to create issue" button on right side
+	Select ProjectName4 from dropdown menu
+	Click on blue "New issue in 'ProjectName4'" button
+	Input Title IssueTitle
+	Click blue "Create issue" button at bottom of page
+	Verify that Issuetitle is displayed as title a top of page
+
+ 	Issue title should be as page title after Update name of issue
+	Navigate to homepage
+	Click "Issues" on left side menu
+	Clear search box
+	Click on search box and select "Author", "is" and the user name used in login from drop down menu
+	Click search (magnifying glass)
+	Click IssueTitle
+	Click grey "Edit" button on right side of title
+	Input UpdatedTitle as title
+	Click blue "Save changes" button
+	Verify that UpdatedTitle is displayed as title a top of page
+
+	Issue title should be as page title after Create second issue with previous updated name
+	Navigate to homepage
+	Click "Issues" on left side menu
+	Click arrow down symbol by blue "Select project to create issue" button on right side
+	Select ProjectName4 from dropdown menu
+	Click on blue "New issue in 'ProjectName4'" button
+	Input Title UpdatedTitle
+	Click blue "Save changes" button
+	Verify that UpdatedTitle is displayed as title a top of page
+
+    Confirmation message Should Be Visible After Delete first issue
+	Navigate to homepage
+	Click "Issues" on left side menu
+	Click the UpdatedTitle marked with #1
+	Click three dots icon on right side of grey "Edit" button on right side of title
+	Click "Delete issue"
+	Click red "Delete issue" button
+	Verify that page contains blue information box saying "The issue was successfully deleted."
+

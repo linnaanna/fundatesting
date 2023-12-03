@@ -1,0 +1,84 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+
+# TODO: Write Dcocumentation e.g. Project Test scenario. CRUD Operation: Create, Read, Update, Delete
+
+Documentation: Project Test scenario. CRUD Operation: Create, Read, Update, Delete	
+
+# TODO: Write Precondition, Postcondition, Tags
+
+Pre Condition	Open Browser, navigate to login page, login using valid credentials
+Post Condition	Close All Browsers
+Tags	ProjectPage, TS-1-ProjectPage
+
+#******************* Common Variables ********************
+
+*** Variables ***
+
+# NOTE: Please Remove your login credential before uploading Assignments
+
+# TODO: Write Project creation field variables
+
+ProjectName= testproject
+ProjectName2= testproject2
+ProjectName3= testproject3
+
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# TODO: Write Positive and Negative Test Cases and Test Process steps
+
+# Positive Test examples are below write test process steps for each below test case
+
+	Confirmation message Should Be Visible After Create blank project
+	Click blue "New project" button on right side of screen on homepage
+	Click "Create blank project"
+	Input ProjectName in "Project name" box
+	Click blue "Create project" button at bottom of screen
+	Verify that page contains blue information box saying "Project 'ProjectName' was successfully created."
+
+	Confirmation message Should Be Visible After Create template project 
+	Click blue "New project" button on right side of screen on homepage
+	Click "Create from template"
+	Choose template "Pages/Gatsby"
+	Input ProjectName2 in "Project Name" box
+	Click blue "Create project" button at bottom of screen
+	Verify that page contains blue information box saying "The project was successfully imported."
+
+	Confirmation message Should Be Visible After Update name of template project
+	Click ProjectName2 on homepage
+	Click "Settings" on left side menu
+	Click "General"
+	Change name in "Project name" box to ProjectName3
+	Click blue "Save changes" button
+	Verify that page contains blue information box saying "Project 'ProjectName3' was successfully updated."
+
+	Confirmation message Should Be Visible After Delete template project
+	Click ProjectName3 on homepage
+	Click "Settings" on left side menu
+	Click "General"
+	Click "Expand" button by "Advanced" at bottom of scrolled screen
+	Click red "Delete this project" button at bottom of scrolled screen
+	Input the given project path
+	Click red "Yes, delete project" button
+	Verify that page contains blue information box saying "Project 'project path' will be deleted on 'date'"
+
+	
+
+# Negative Test examples are below write test process steps for each below test case
+
+	Error message Should Be Visible After Create a blank project with the previous same name
+	Click blue "New project" button on right side of screen on homepage
+	Click "Create blank project"
+	Input ProjectName in "Project Name" box
+	Click blue "Create project" button at bottom of screen
+	Verify that page contains red information box saying "The form contains the following errors:
+															Project namespace name has already been taken
+															Name has already been taken
+															Path has already been taken"
+
